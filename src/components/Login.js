@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux';
-import { login } from '../redux/userSlice'
+import { login, logout } from '../redux/userSlice'
 
 function Login() {
 
@@ -15,6 +15,12 @@ function Login() {
                 }}
             >
             Login
+        </button>
+
+        <button onClick={() => {
+            dispatch(logout())
+        }}>
+            LogOut
         </button>
         </div>
     )
