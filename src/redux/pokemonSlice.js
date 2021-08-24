@@ -16,12 +16,15 @@ export const getPokemon = createAsyncThunk(
 export const pokemonSlice = createSlice({
     name: "pokemon",
     initialState: [],
+    reducers: {
+
+    },
     extraReducers: {
         [getPokemon.fulfilled]: (state, action) => {
+            //only returning the list
             return action.payload.pokemon
         }
     }
-
 })
 
 export const { } = pokemonSlice.actions
