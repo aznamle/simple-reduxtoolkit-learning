@@ -9,7 +9,7 @@ export default configureStore({
         user: userReducer,
         theme: themeReducer,
         pokemon: pokemonReducer,
-        animeSeason: animeSeasonReducer
+        anime: animeSeasonReducer,
         
 
     },

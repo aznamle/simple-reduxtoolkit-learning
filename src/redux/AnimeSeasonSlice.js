@@ -14,9 +14,21 @@ export const getSeasonList = createAsyncThunk(
 
 
 export const AnimeSeasonSlice = createSlice({
-    name: "seasonlist",
-    initialState: [],
+    name: "seasonList",
+    initialState: {
+        watchList: [],
+    },
     reducers: {
+        // setWatch: (state, action) => {
+        //     const showExists = (state.filter(item => state.mal_id === item.mal_id).length > 0)
+        //     if(showExists) {
+        //         state = [...state]
+        //       } else {
+        //         state = [...state, state]
+        //       }
+              
+        //       return { ...state, watchList: [action.payload, ...state.watchList]}
+        // }
     },
     extraReducers: {
         [getSeasonList.fulfilled]: (state, action) => {
@@ -25,5 +37,5 @@ export const AnimeSeasonSlice = createSlice({
     }
 })
 
-export const { setWatch } =AnimeSeasonSlice.actions
+export const { setWatch } = AnimeSeasonSlice.actions
 export default AnimeSeasonSlice.reducer
