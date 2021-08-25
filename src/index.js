@@ -6,12 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 
+import AnimeProvider from './store/context'
+
 
 ReactDOM.render( 
   <React.StrictMode>
-    <Provider store={store}>
+    <AnimeProvider>
       <App />
-    </Provider>
+    </AnimeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

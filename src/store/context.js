@@ -1,50 +1,51 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 
-const animeContext = React.createContext()
+const AnimeContext = createContext()
 
 const API = "https://api.jikan.moe/v4"
 
-const [watchList, setWatchList] = useState([])
-const [seasonList, setSeasonList] = useState([])
 
- const animeContext = ({ children }) => {
+const AnimeProvider = (props) => {
 
+    const [watchList, setWatchList] = useState([])
+    const [seasonList, setSeasonList] = useState([])
 
     async function getSeasonList() {
-        const res = await fetch(`{${API}/seasons/2021/fall}`)
+        const res = await fetch(`https://api.jikan.moe/v4/seasons/2021/fall}`)
         const data = await res.json()
     
         setSeasonList(data.data)
     }
 
-    const setWatch = (show) => {
-        setWatchList(state => {
-          const showExists = (state.filter(item => show.mal_id === item.mal_id).length > 0)
+    // function setWatch(show){
+    //     setWatchList(state => {
+    //       const showExists = (state.filter(item => show.mal_id === item.mal_id).length > 0)
     
-          if(showExists) {
-            state = [...state]
-          } else {
-            state = [...state, show]
-          }
+    //       if(showExists) {
+    //         state = [...state]
+    //       } else {
+    //         state = [...state, show]
+    //       }
           
-          return state
-        })
-    }
+    //       return state
+    //     })
+    // }
 
     useEffect(() => {
         getSeasonList()
     }, [])
 
     return (
-        <animeContext.Provider value={{
+        <AnimeContext.Provider value={{
           getSeasonList,
-          setWatch,
           watchList,
-          seasonList  
+          setWatchList,
+          seasonList,
+          setSeasonList
         }}>
-            {children}
-        </animeContext.Provider>
+            {props.children}
+        </AnimeContext.Provider>
     )
 }
 
-export { animeContext }
+export default { AnimeProvider, AnimeContext }

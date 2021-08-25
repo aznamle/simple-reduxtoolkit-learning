@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import './App.css';
 
@@ -9,8 +9,15 @@ import './App.css';
 // import List from './components/List';
 // import SeasonList from './components/SeasonList';
 // ------------------------------------------------
+
+import AnimeContext from './store/context'
+
 function App() {
 
+  const { seasonList, watchList } = useContext(AnimeContext)
+
+
+  console.log(seasonList)
   return (
     <div className="App">
       {/* <Profile />
@@ -18,12 +25,7 @@ function App() {
       {/* <ChangeColor /> */}
       {/* <List /> */}
 
-      {/* {seasonList.map(item => (
-        <div>
-          <p>{item.title}</p>
-          <button onClick={() => setWatch(item)}>set watch</button>
-        </div>
-      ))} */}
+
 
     </div>
   );
