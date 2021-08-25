@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const getSeasonList = createAsyncThunk(
-    'getSeasonList',
+export const getSeason = createAsyncThunk(
+    'getSeason',
     async () => {
         const res = await fetch('https://api.jikan.moe/v4/seasons/2021/fall')
         if(res.ok) {
@@ -10,14 +10,12 @@ export const getSeasonList = createAsyncThunk(
         }
     }
 )
-
+ 
 
 
 export const AnimeSeasonSlice = createSlice({
     name: "seasonList",
-    initialState: {
-        watchList: [],
-    },
+    initialState: [],
     reducers: {
         // setWatch: (state, action) => {
         //     const showExists = (state.filter(item => state.mal_id === item.mal_id).length > 0)
@@ -31,11 +29,11 @@ export const AnimeSeasonSlice = createSlice({
         // }
     },
     extraReducers: {
-        [getSeasonList.fulfilled]: (state, action) => {
-            return action.payload.seasonList
+        [getSeason.fulfilled]: (state, action) => {
+            return action.payload.seasonList;
         }
     }
 })
 
-export const { setWatch } = AnimeSeasonSlice.actions
+export const { } = AnimeSeasonSlice.actions
 export default AnimeSeasonSlice.reducer

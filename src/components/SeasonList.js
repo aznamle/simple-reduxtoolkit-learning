@@ -1,24 +1,25 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getSeasonList } from '../redux/AnimeSeasonSlice'
+import { getSeason } from '../redux/AnimeSeasonSlice'
 
 function SeasonList() {
 
     const dispatch = useDispatch()
-    const anime = useSelector(state => state.anime)
+    const { anime } = useSelector((state) => state.anime)
 
     useEffect(() => {
-        dispatch(getSeasonList())
+        dispatch(getSeason())
     }, [dispatch])
 
+    console.log(anime)
     return (
         <div>
-            {anime.data.map(item => (
-                <div>
-                    <p>{item.title}</p>
-                </div>
-            ))}
+        {/* {seasonList.data.map(item => (
+        <div>
+          <p>{item.title}</p>
         </div>
+        ))} */}
+</div>
     )
 }
 
